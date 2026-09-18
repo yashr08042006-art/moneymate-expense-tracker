@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="MoneyMate - Personal Expense and Income Tracker"
+    >
+
+    <title>MoneyMate — Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">₹</div>
+
+            <div>
+                <h2>MoneyMate</h2>
+                <span>Personal Finance</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <button
+                class="nav-btn active"
+                data-page="dashboard"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-btn"
+                data-page="transactions"
+            >
+                <span>↔</span>
+                Transactions
+            </button>
+
+            <button
+                class="nav-btn"
+                data-page="analytics"
+            >
+                <span>◔</span>
+                Analytics
+            </button>
+
+            <button
+                class="nav-btn"
+                data-page="backup"
+            >
+                <span>☁</span>
+                Backup & Data
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="themeToggle"
+                class="theme-button"
+            >
+                🌙 Dark Mode
+            </button>
+
+            <div class="storage-status">
+                ● Data saved locally
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">
+                    PERSONAL FINANCE
+                </p>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+                <p
+                    id="todayText"
+                    class="muted"
+                ></p>
+            </div>
+
+            <button
+                id="openAddBtn"
+                class="primary-button"
+            >
+                ＋ Add Transaction
+            </button>
+
+        </header>
+
+
+        <!-- ================================================= -->
+        <!-- DASHBOARD -->
+        <!-- ================================================= -->
+
+        <section
+            id="dashboardPage"
+            class="page active"
+        >
+
+            <!-- SUMMARY CARDS -->
+            <div class="summary-grid">
+
+                <!-- Balance -->
+                <div class="summary-card">
+
+                    <div class="summary-icon balance-icon">
+                        ₹
+                    </div>
+
+                    <div>
+                        <span>
+                            Available Balance
+                        </span>
+
+                        <strong id="totalBalance">
+                            ₹0
+                        </strong>
+
+                        <small>
+                            Income − Expenses
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!-- Income -->
+                <div class="summary-card">
+
+                    <div class="summary-icon income-icon">
+                        ↗
+                    </div>
+
+                    <div>
+                        <span>
+                            Total Income
+                        </span>
+
+                        <strong id="totalIncome">
+                            ₹0
+                        </strong>
+
+                        <small>
+                            All recorded income
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!-- Expenses -->
+                <div class="summary-card">
+
+                    <div class="summary-icon expense-icon">
+                        ↘
+                    </div>
+
+                    <div>
+                        <span>
+                            Total Expenses
+                        </span>
+
+                        <strong id="totalExpenses">
+                            ₹0
+                        </strong>
+
+                        <small>
+                            All recorded spending
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!-- Monthly -->
+                <div class="summary-card">
+
+                    <div class="summary-icon month-icon">
+                        ◷
+                    </div>
+
+                    <div>
+                        <span>
+                            This Month
+                        </span>
+
+                        <strong id="monthExpenses">
+                            ₹0
+                        </strong>
+
+                        <small id="monthChange">
+                            Expense total
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHART + CATEGORY -->
+            <div class="dashboard-columns">
+
+                <!-- Weekly Chart -->
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>
+                                Weekly Spending
+                            </h2>
+
+                            <p>
+                                Last 7 days
+                            </p>
+                        </div>
+
+                        <span class="pill">
+                            Expenses
+                        </span>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+
+                </section>
+
+
+                <!-- Category Breakdown -->
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>
+                                Category Breakdown
+                            </h2>
+
+                            <p>
+                                Where your money goes
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="categoryBreakdown"
+                        class="category-list"
+                    ></div>
+
+                </section>
+
+            </div>
+
+
+            <!-- RECENT TRANSACTIONS -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>
+                            Recent Transactions
+                        </h2>
+
+                        <p>
+                            Your latest activity
+                        </p>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        data-page-link="transactions"
+                    >
+                        View All →
+                    </button>
+
+                </div>
+
+                <div
+                    id="recentTransactions"
+                    class="transaction-list"
+                ></div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- TRANSACTIONS -->
+        <!-- ================================================= -->
+
+        <section
+            id="transactionsPage"
+            class="page"
+        >
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>
+                            Transaction History
+                        </h2>
+
+                        <p>
+                            Search, filter, edit or delete your records.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTERS -->
+                <div class="filters">
+
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="🔎 Search transactions..."
+                    >
+
+                    <select id="typeFilter">
+
+                        <option value="all">
+                            All Types
+                        </option>
+
+                        <option value="expense">
+                            Expenses
+                        </option>
+
+                        <option value="income">
+                            Income
+                        </option>
+
+                    </select>
+
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        id="monthFilter"
+                        type="month"
+                    >
+
+
+                    <select id="sortFilter">
+
+                        <option value="date-desc">
+                            Newest First
+                        </option>
+
+                        <option value="date-asc">
+                            Oldest First
+                        </option>
+
+                        <option value="amount-desc">
+                            Highest Amount
+                        </option>
+
+                        <option value="amount-asc">
+                            Lowest Amount
+                        </option>
+
+                        <option value="name-asc">
+                            Name A-Z
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    id="historyTransactions"
+                    class="transaction-list"
+                ></div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- ANALYTICS -->
+        <!-- ================================================= -->
+
+        <section
+            id="analyticsPage"
+            class="page"
+        >
+
+            <div class="analytics-stat-grid">
+
+                <div class="mini-card">
+
+                    <span>
+                        Top Category
+                    </span>
+
+                    <strong id="topCategory">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <span>
+                        Daily Average
+                    </span>
+
+                    <strong id="dailyAverage">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <span>
+                        Average Expense
+                    </span>
+
+                    <strong id="averageExpense">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <span>
+                        Largest Expense
+                    </span>
+
+                    <strong id="largestExpense">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONTHLY CHART -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>
+                            Monthly Spending
+                        </h2>
+
+                        <p>
+                            Expense trend across the last 6 months
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="large-chart">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+
+            </section>
+
+
+            <!-- CATEGORY CHART -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>
+                            Spending by Category
+                        </h2>
+
+                        <p>
+                            Total expense distribution
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="large-chart">
+                    <canvas id="analyticsCategoryChart"></canvas>
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- BACKUP -->
+        <!-- ================================================= -->
+
+        <section
+            id="backupPage"
+            class="page"
+        >
+
+            <section class="panel backup-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Backup & Data
+                        </h2>
+
+                        <p>
+                            Your data is stored in this browser.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="backup-grid">
+
+                    <button
+                        id="exportJsonBtn"
+                        class="backup-card"
+                    >
+
+                        <span class="backup-icon">
+                            📥
+                        </span>
+
+                        <strong>
+                            Export JSON
+                        </strong>
+
+                        <small>
+                            Complete backup of your transactions
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        id="importJsonBtn"
+                        class="backup-card"
+                    >
+
+                        <span class="backup-icon">
+                            📤
+                        </span>
+
+                        <strong>
+                            Import JSON
+                        </strong>
+
+                        <small>
+                            Restore a previous backup
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        id="exportCsvBtn"
+                        class="backup-card"
+                    >
+
+                        <span class="backup-icon">
+                            📊
+                        </span>
+
+                        <strong>
+                            Export CSV
+                        </strong>
+
+                        <small>
+                            Open your records in Excel
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        id="clearDataBtn"
+                        class="backup-card danger"
+                    >
+
+                        <span class="backup-icon">
+                            🗑️
+                        </span>
+
+                        <strong>
+                            Clear All Data
+                        </strong>
+
+                        <small>
+                            Delete every saved transaction
+                        </small>
+
+                    </button>
+
+                </div>
+
+
+                <input
+                    id="importFile"
+                    type="file"
+                    accept=".json,application/json"
+                    hidden
+                >
+
+
+                <div class="data-note">
+
+                    <strong>
+                        🔒 Privacy
+                    </strong>
+
+                    <p>
+                        No account or server is required.
+                        Your records stay in this browser unless
+                        you export them.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- TRANSACTION MODAL -->
+<!-- ================================================= -->
+
+<div
+    id="transactionModal"
+    class="modal hidden"
+>
+
+    <div
+        class="modal-backdrop"
+        data-close-modal
+    ></div>
+
+
+    <div class="modal-card">
+
+        <button
+            class="close-button"
+            data-close-modal
+        >
+            ×
+        </button>
+
+
+        <p class="eyebrow">
+            MONEYMATE
+        </p>
+
+        <h2 id="modalTitle">
+            Add Transaction
+        </h2>
+
+        <p class="muted">
+            Record an income or expense.
+        </p>
+
+
+        <!-- TYPE SWITCH -->
+        <div class="type-switch">
+
+            <button
+                id="expenseTypeBtn"
+                class="type-btn active"
+            >
+                💸 Expense
+            </button>
+
+            <button
+                id="incomeTypeBtn"
+                class="type-btn"
+            >
+                💰 Income
+            </button>
+
+        </div>
+
+
+        <!-- FORM -->
+        <form id="transactionForm">
+
+            <div class="form-grid">
+
+                <label>
+
+                    Amount
+
+                    <div class="amount-input">
+
+                        <span>
+                            ₹
+                        </span>
+
+                        <input
+                            id="amount"
+                            type="number"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="0.00"
+                            required
+                        >
+
+                    </div>
+
+                </label>
+
+
+                <label>
+
+                    Transaction Name
+
+                    <input
+                        id="transactionName"
+                        type="text"
+                        maxlength="80"
+                        placeholder="e.g. Lunch, Salary..."
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Category
+
+                    <select
+                        id="category"
+                        required
+                    ></select>
+
+                </label>
+
+
+                <label>
+
+                    Date & Time
+
+                    <input
+                        id="dateTime"
+                        type="datetime-local"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Payment Method
+
+                    <select id="paymentMethod">
+
+                        <option>
+                            Cash
+                        </option>
+
+                        <option selected>
+                            UPI
+                        </option>
+
+                        <option>
+                            Debit Card
+                        </option>
+
+                        <option>
+                            Credit Card
+                        </option>
+
+                        <option>
+                            Net Banking
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label class="full-field">
+
+                    Note
+                    <span class="optional">
+                        (optional)
+                    </span>
+
+                    <textarea
+                        id="note"
+                        maxlength="200"
+                        rows="3"
+                        placeholder="Add a note..."
+                    ></textarea>
+
+                </label>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-button submit-button"
+            >
+                Save Transaction
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
