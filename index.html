@@ -1,37 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2563eb">
-    <link rel="icon" type="image/png" href="icons/favicon.png">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
         content="MoneyMate - Personal Expense and Income Tracker"
     >
 
-    <title>MoneyMate — Expense Tracker</title>
+    <meta
+        name="theme-color"
+        content="#2563eb"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="icons/favicon.png"
+    >
+
+    <title>
+        MoneyMate — Expense Tracker
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
 <div class="app">
 
-    <!-- ================= SIDEBAR ================= -->
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================================= -->
+
     <aside class="sidebar">
 
         <div class="brand">
-            <div class="brand-logo">₹</div>
+
+            <div class="brand-logo">
+                ₹
+            </div>
 
             <div>
-                <h2>MoneyMate</h2>
-                <span>Personal Finance</span>
+
+                <h2>
+                    MoneyMate
+                </h2>
+
+                <span>
+                    Personal Finance
+                </span>
+
             </div>
+
         </div>
+
 
         <nav class="navigation">
 
@@ -43,6 +85,7 @@
                 Dashboard
             </button>
 
+
             <button
                 class="nav-btn"
                 data-page="transactions"
@@ -50,6 +93,16 @@
                 <span>↔</span>
                 Transactions
             </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="categories"
+            >
+                <span>🏷️</span>
+                Categories
+            </button>
+
 
             <button
                 class="nav-btn"
@@ -59,15 +112,44 @@
                 Analytics
             </button>
 
+
+            <button
+                class="nav-btn"
+                data-page="budget"
+            >
+                <span>🎯</span>
+                Budget & Goals
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="reminders"
+            >
+                <span>🔔</span>
+                Reminders
+            </button>
+
+
+            <button
+                class="nav-btn"
+                data-page="activity"
+            >
+                <span>📊</span>
+                Spending Activity
+            </button>
+
+
             <button
                 class="nav-btn"
                 data-page="backup"
             >
-                <span>☁</span>
+                <span>☁️</span>
                 Backup & Data
             </button>
 
         </nav>
+
 
         <div class="sidebar-bottom">
 
@@ -78,8 +160,11 @@
                 🌙 Dark Mode
             </button>
 
+
             <div class="storage-status">
+
                 ● Data saved locally
+
             </div>
 
         </div>
@@ -87,26 +172,39 @@
     </aside>
 
 
-    <!-- ================= MAIN ================= -->
+
+    <!-- ================================================= -->
+    <!-- MAIN -->
+    <!-- ================================================= -->
+
     <main class="main">
 
+
+        <!-- ================================================= -->
         <!-- TOP BAR -->
+        <!-- ================================================= -->
+
         <header class="topbar">
 
             <div>
+
                 <p class="eyebrow">
                     PERSONAL FINANCE
                 </p>
+
 
                 <h1 id="pageTitle">
                     Dashboard
                 </h1>
 
+
                 <p
                     id="todayText"
                     class="muted"
                 ></p>
+
             </div>
+
 
             <button
                 id="openAddBtn"
@@ -118,6 +216,7 @@
         </header>
 
 
+
         <!-- ================================================= -->
         <!-- DASHBOARD -->
         <!-- ================================================= -->
@@ -127,10 +226,14 @@
             class="page active"
         >
 
+
             <!-- SUMMARY CARDS -->
+
             <div class="summary-grid">
 
-                <!-- Balance -->
+
+                <!-- BALANCE -->
+
                 <div class="summary-card">
 
                     <div class="summary-icon balance-icon">
@@ -138,23 +241,29 @@
                     </div>
 
                     <div>
+
                         <span>
                             Available Balance
                         </span>
+
 
                         <strong id="totalBalance">
                             ₹0
                         </strong>
 
+
                         <small>
                             Income − Expenses
                         </small>
+
                     </div>
 
                 </div>
 
 
-                <!-- Income -->
+
+                <!-- INCOME -->
+
                 <div class="summary-card">
 
                     <div class="summary-icon income-icon">
@@ -162,23 +271,29 @@
                     </div>
 
                     <div>
+
                         <span>
                             Total Income
                         </span>
+
 
                         <strong id="totalIncome">
                             ₹0
                         </strong>
 
+
                         <small>
                             All recorded income
                         </small>
+
                     </div>
 
                 </div>
 
 
-                <!-- Expenses -->
+
+                <!-- EXPENSE -->
+
                 <div class="summary-card">
 
                     <div class="summary-icon expense-icon">
@@ -186,23 +301,29 @@
                     </div>
 
                     <div>
+
                         <span>
                             Total Expenses
                         </span>
+
 
                         <strong id="totalExpenses">
                             ₹0
                         </strong>
 
+
                         <small>
                             All recorded spending
                         </small>
+
                     </div>
 
                 </div>
 
 
-                <!-- Monthly -->
+
+                <!-- MONTH -->
+
                 <div class="summary-card">
 
                     <div class="summary-icon month-icon">
@@ -210,33 +331,45 @@
                     </div>
 
                     <div>
+
                         <span>
                             This Month
                         </span>
+
 
                         <strong id="monthExpenses">
                             ₹0
                         </strong>
 
+
                         <small id="monthChange">
                             Expense total
                         </small>
+
                     </div>
 
                 </div>
 
+
             </div>
 
 
-            <!-- CHART + CATEGORY -->
+
+            <!-- ================================================= -->
+            <!-- DASHBOARD COLUMNS -->
+            <!-- ================================================= -->
+
             <div class="dashboard-columns">
 
-                <!-- Weekly Chart -->
+
+                <!-- WEEKLY SPENDING -->
+
                 <section class="panel">
 
                     <div class="panel-header">
 
                         <div>
+
                             <h2>
                                 Weekly Spending
                             </h2>
@@ -244,7 +377,9 @@
                             <p>
                                 Last 7 days
                             </p>
+
                         </div>
+
 
                         <span class="pill">
                             Expenses
@@ -252,29 +387,39 @@
 
                     </div>
 
+
                     <div class="chart-container">
-                        <canvas id="weeklyChart"></canvas>
+
+                        <canvas
+                            id="weeklyChart"
+                        ></canvas>
+
                     </div>
 
                 </section>
 
 
-                <!-- Category Breakdown -->
+
+                <!-- CATEGORY BREAKDOWN -->
+
                 <section class="panel">
 
                     <div class="panel-header">
 
                         <div>
+
                             <h2>
                                 Category Breakdown
                             </h2>
 
                             <p>
-                                Where your money goes
+                                Click a category to view its transactions
                             </p>
+
                         </div>
 
                     </div>
+
 
                     <div
                         id="categoryBreakdown"
@@ -286,12 +431,17 @@
             </div>
 
 
+
+            <!-- ================================================= -->
             <!-- RECENT TRANSACTIONS -->
+            <!-- ================================================= -->
+
             <section class="panel">
 
                 <div class="panel-header">
 
                     <div>
+
                         <h2>
                             Recent Transactions
                         </h2>
@@ -299,7 +449,9 @@
                         <p>
                             Your latest activity
                         </p>
+
                     </div>
+
 
                     <button
                         class="text-button"
@@ -310,6 +462,7 @@
 
                 </div>
 
+
                 <div
                     id="recentTransactions"
                     class="transaction-list"
@@ -317,7 +470,9 @@
 
             </section>
 
+
         </section>
+
 
 
         <!-- ================================================= -->
@@ -334,26 +489,32 @@
                 <div class="panel-header">
 
                     <div>
+
                         <h2>
                             Transaction History
                         </h2>
 
                         <p>
-                            Search, filter, edit or delete your records.
+                            Search and filter your records.
                         </p>
+
                     </div>
 
                 </div>
 
 
+
                 <!-- FILTERS -->
+
                 <div class="filters">
+
 
                     <input
                         id="searchInput"
                         type="search"
                         placeholder="🔎 Search transactions..."
                     >
+
 
                     <select id="typeFilter">
 
@@ -381,9 +542,81 @@
                     </select>
 
 
+                    <select id="yearFilter">
+
+                        <option value="all">
+                            All Years
+                        </option>
+
+                    </select>
+
+
                     <input
                         id="monthFilter"
                         type="month"
+                    >
+
+
+                    <input
+                        id="minAmount"
+                        type="number"
+                        min="0"
+                        placeholder="Min amount"
+                    >
+
+
+                    <input
+                        id="maxAmount"
+                        type="number"
+                        min="0"
+                        placeholder="Max amount"
+                    >
+
+
+                    <select id="paymentFilter">
+
+                        <option value="all">
+                            All Payment Methods
+                        </option>
+
+                        <option value="Cash">
+                            Cash
+                        </option>
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="Debit Card">
+                            Debit Card
+                        </option>
+
+                        <option value="Credit Card">
+                            Credit Card
+                        </option>
+
+                        <option value="Net Banking">
+                            Net Banking
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        id="fromDate"
+                        type="date"
+                        title="From date"
+                    >
+
+
+                    <input
+                        id="toDate"
+                        type="date"
+                        title="To date"
                     >
 
 
@@ -414,6 +647,7 @@
                 </div>
 
 
+
                 <div
                     id="historyTransactions"
                     class="transaction-list"
@@ -422,6 +656,46 @@
             </section>
 
         </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- CATEGORIES -->
+        <!-- ================================================= -->
+
+        <section
+            id="categoriesPage"
+            class="page"
+        >
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Category Spending
+                        </h2>
+
+                        <p>
+                            Click any category to see all transactions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="fullCategoryList"
+                    class="category-list"
+                ></div>
+
+            </section>
+
+        </section>
+
 
 
         <!-- ================================================= -->
@@ -433,7 +707,9 @@
             class="page"
         >
 
+
             <div class="analytics-stat-grid">
+
 
                 <div class="mini-card">
 
@@ -489,12 +765,15 @@
             </div>
 
 
+
             <!-- MONTHLY CHART -->
+
             <section class="panel">
 
                 <div class="panel-header">
 
                     <div>
+
                         <h2>
                             Monthly Spending
                         </h2>
@@ -502,23 +781,32 @@
                         <p>
                             Expense trend across the last 6 months
                         </p>
+
                     </div>
 
                 </div>
 
+
                 <div class="large-chart">
-                    <canvas id="monthlyChart"></canvas>
+
+                    <canvas
+                        id="monthlyChart"
+                    ></canvas>
+
                 </div>
 
             </section>
 
 
+
             <!-- CATEGORY CHART -->
+
             <section class="panel">
 
                 <div class="panel-header">
 
                     <div>
+
                         <h2>
                             Spending by Category
                         </h2>
@@ -526,12 +814,18 @@
                         <p>
                             Total expense distribution
                         </p>
+
                     </div>
 
                 </div>
 
+
                 <div class="large-chart">
-                    <canvas id="analyticsCategoryChart"></canvas>
+
+                    <canvas
+                        id="analyticsCategoryChart"
+                    ></canvas>
+
                 </div>
 
             </section>
@@ -539,8 +833,463 @@
         </section>
 
 
+
         <!-- ================================================= -->
-        <!-- BACKUP -->
+        <!-- BUDGET & GOALS -->
+        <!-- ================================================= -->
+
+        <section
+            id="budgetPage"
+            class="page"
+        >
+
+
+            <!-- MONTHLY BUDGET -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🎯 Monthly Budget
+                        </h2>
+
+                        <p>
+                            Set your monthly spending limit.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <label>
+
+                        Monthly Budget
+
+                        <input
+                            id="monthlyBudgetInput"
+                            type="number"
+                            min="0"
+                            placeholder="10000"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        &nbsp;
+
+                        <button
+                            id="saveBudgetBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Save Budget
+                        </button>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="budgetStatus"
+                    class="data-note"
+                ></div>
+
+            </section>
+
+
+
+            <!-- CATEGORY BUDGETS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🏷️ Category-wise Budgets
+                        </h2>
+
+                        <p>
+                            Set separate limits for individual categories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="categoryBudgetList"
+                    class="category-budget-list"
+                ></div>
+
+            </section>
+
+
+
+            <!-- SAVINGS GOALS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            💰 Savings Goals
+                        </h2>
+
+                        <p>
+                            Track your savings progress.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <label>
+
+                        Goal Name
+
+                        <input
+                            id="goalName"
+                            type="text"
+                            placeholder="New Laptop"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Target Amount
+
+                        <input
+                            id="goalTarget"
+                            type="number"
+                            min="0"
+                            placeholder="60000"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Saved Amount
+
+                        <input
+                            id="goalSaved"
+                            type="number"
+                            min="0"
+                            placeholder="10000"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        &nbsp;
+
+                        <button
+                            id="addGoalBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Add Goal
+                        </button>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="goalsList"
+                    class="goals-list"
+                ></div>
+
+            </section>
+
+
+
+            <!-- SMART INSIGHTS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🤖 Smart Spending Insights
+                        </h2>
+
+                        <p>
+                            Automatic observations from your spending.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="insightsList"
+                    class="insights-list"
+                ></div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- REMINDERS -->
+        <!-- ================================================= -->
+
+        <section
+            id="remindersPage"
+            class="page"
+        >
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🔔 Payment Reminders
+                        </h2>
+
+                        <p>
+                            Remember rent, electricity, recharge and subscriptions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <label>
+
+                        Reminder
+
+                        <input
+                            id="reminderName"
+                            type="text"
+                            placeholder="Electricity Bill"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Date
+
+                        <input
+                            id="reminderDate"
+                            type="date"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Amount
+
+                        <input
+                            id="reminderAmount"
+                            type="number"
+                            min="0"
+                            placeholder="1000"
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        &nbsp;
+
+                        <button
+                            id="addReminderBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Add Reminder
+                        </button>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="remindersList"
+                    class="reminders-list"
+                ></div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- SPENDING ACTIVITY -->
+        <!-- ================================================= -->
+
+        <section
+            id="activityPage"
+            class="page"
+        >
+
+
+            <section class="panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h2>
+                            📊 Spending Activity
+                        </h2>
+
+                        <p>
+                            Review your spending history like a Digital Wellbeing activity view.
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        id="activityPeriod"
+                    >
+
+                        <option value="this-week">
+                            This Week
+                        </option>
+
+                        <option value="previous-week">
+                            Previous Week
+                        </option>
+
+                        <option value="2-weeks-ago">
+                            2 Weeks Ago
+                        </option>
+
+                        <option value="3-weeks-ago">
+                            3 Weeks Ago
+                        </option>
+
+                        <option value="4-weeks-ago">
+                            4 Weeks Ago
+                        </option>
+
+                        <option value="this-month">
+                            This Month
+                        </option>
+
+                        <option value="previous-month">
+                            Previous Month
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ACTIVITY SUMMARY -->
+
+                <div
+                    id="activitySummary"
+                    class="analytics-stat-grid"
+                ></div>
+
+
+
+                <!-- DAILY ACTIVITY -->
+
+                <section class="activity-section">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Daily Spending
+                            </h3>
+
+                            <p>
+                                See how much you spent each day.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="activityChart"
+                        class="activity-chart"
+                    ></div>
+
+                </section>
+
+
+
+                <!-- CATEGORY ACTIVITY -->
+
+                <section
+                    id="activityCategories"
+                    class="activity-section"
+                ></section>
+
+
+
+                <!-- TRANSACTION ACTIVITY -->
+
+                <section
+                    id="activityTransactions"
+                    class="activity-section"
+                ></section>
+
+
+            </section>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- BACKUP & DATA -->
         <!-- ================================================= -->
 
         <section
@@ -548,7 +1297,10 @@
             class="page"
         >
 
-            <section class="panel backup-panel">
+            <section
+                class="panel backup-panel"
+            >
+
 
                 <div class="panel-header">
 
@@ -567,7 +1319,27 @@
                 </div>
 
 
+
+                <!-- AUTOMATIC BACKUP STATUS -->
+
+                <div
+                    id="autoBackupStatus"
+                    class="data-note"
+                >
+
+                    🔄 Automatic backup:
+                    <strong>
+                        Not created yet
+                    </strong>
+
+                </div>
+
+
+
+                <!-- BACKUP BUTTONS -->
+
                 <div class="backup-grid">
+
 
                     <button
                         id="exportJsonBtn"
@@ -578,15 +1350,18 @@
                             📥
                         </span>
 
+
                         <strong>
                             Export JSON
                         </strong>
+
 
                         <small>
                             Complete backup of your transactions
                         </small>
 
                     </button>
+
 
 
                     <button
@@ -598,15 +1373,18 @@
                             📤
                         </span>
 
+
                         <strong>
                             Import JSON
                         </strong>
+
 
                         <small>
                             Restore a previous backup
                         </small>
 
                     </button>
+
 
 
                     <button
@@ -618,15 +1396,18 @@
                             📊
                         </span>
 
+
                         <strong>
                             Export CSV
                         </strong>
+
 
                         <small>
                             Open your records in Excel
                         </small>
 
                     </button>
+
 
 
                     <button
@@ -638,9 +1419,11 @@
                             🗑️
                         </span>
 
+
                         <strong>
                             Clear All Data
                         </strong>
+
 
                         <small>
                             Delete every saved transaction
@@ -648,8 +1431,12 @@
 
                     </button>
 
+
                 </div>
 
+
+
+                <!-- IMPORT FILE -->
 
                 <input
                     id="importFile"
@@ -659,11 +1446,15 @@
                 >
 
 
+
+                <!-- PRIVACY -->
+
                 <div class="data-note">
 
                     <strong>
                         🔒 Privacy
                     </strong>
+
 
                     <p>
                         No account or server is required.
@@ -673,13 +1464,16 @@
 
                 </div>
 
+
             </section>
 
         </section>
 
+
     </main>
 
 </div>
+
 
 
 <!-- ================================================= -->
@@ -691,13 +1485,16 @@
     class="modal hidden"
 >
 
+
     <div
         class="modal-backdrop"
         data-close-modal
     ></div>
 
 
+
     <div class="modal-card">
+
 
         <button
             class="close-button"
@@ -707,43 +1504,59 @@
         </button>
 
 
+
         <p class="eyebrow">
             MONEYMATE
         </p>
 
+
         <h2 id="modalTitle">
             Add Transaction
         </h2>
+
 
         <p class="muted">
             Record an income or expense.
         </p>
 
 
+
         <!-- TYPE SWITCH -->
+
         <div class="type-switch">
+
 
             <button
                 id="expenseTypeBtn"
                 class="type-btn active"
+                type="button"
             >
                 💸 Expense
             </button>
 
+
             <button
                 id="incomeTypeBtn"
                 class="type-btn"
+                type="button"
             >
                 💰 Income
             </button>
 
+
         </div>
 
 
+
         <!-- FORM -->
+
         <form id="transactionForm">
 
+
             <div class="form-grid">
+
+
+                <!-- AMOUNT -->
 
                 <label>
 
@@ -754,6 +1567,7 @@
                         <span>
                             ₹
                         </span>
+
 
                         <input
                             id="amount"
@@ -768,6 +1582,9 @@
 
                 </label>
 
+
+
+                <!-- NAME -->
 
                 <label>
 
@@ -784,6 +1601,9 @@
                 </label>
 
 
+
+                <!-- CATEGORY -->
+
                 <label>
 
                     Category
@@ -795,6 +1615,9 @@
 
                 </label>
 
+
+
+                <!-- DATE -->
 
                 <label>
 
@@ -809,33 +1632,46 @@
                 </label>
 
 
+
+                <!-- PAYMENT -->
+
                 <label>
 
                     Payment Method
 
-                    <select id="paymentMethod">
+                    <select
+                        id="paymentMethod"
+                    >
 
-                        <option>
+                        <option value="Cash">
                             Cash
                         </option>
 
-                        <option selected>
+
+                        <option
+                            value="UPI"
+                            selected
+                        >
                             UPI
                         </option>
 
-                        <option>
+
+                        <option value="Debit Card">
                             Debit Card
                         </option>
 
-                        <option>
+
+                        <option value="Credit Card">
                             Credit Card
                         </option>
 
-                        <option>
+
+                        <option value="Net Banking">
                             Net Banking
                         </option>
 
-                        <option>
+
+                        <option value="Other">
                             Other
                         </option>
 
@@ -844,12 +1680,17 @@
                 </label>
 
 
+
+                <!-- NOTE -->
+
                 <label class="full-field">
 
                     Note
+
                     <span class="optional">
                         (optional)
                     </span>
+
 
                     <textarea
                         id="note"
@@ -860,7 +1701,9 @@
 
                 </label>
 
+
             </div>
+
 
 
             <button
@@ -870,6 +1713,7 @@
                 Save Transaction
             </button>
 
+
         </form>
 
     </div>
@@ -877,23 +1721,64 @@
 </div>
 
 
+
+<!-- ================================================= -->
 <!-- TOAST -->
+<!-- ================================================= -->
+
 <div
     id="toast"
     class="toast"
 ></div>
 
 
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
+
 <script src="script.js"></script>
-    <script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-            .then(() => console.log("MoneyMate Service Worker registered"))
-            .catch(error => console.error("Service Worker error:", error));
-    });
+
+
+<!-- SERVICE WORKER -->
+<script>
+
+if (
+    "serviceWorker" in navigator
+) {
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+
+                .then(
+                    () =>
+                        console.log(
+                            "MoneyMate Service Worker registered"
+                        )
+                )
+
+                .catch(
+                    error =>
+                        console.error(
+                            "Service Worker error:",
+                            error
+                        )
+                );
+
+        }
+    );
+
 }
+
 </script>
 
+
 </body>
+
 </html>
