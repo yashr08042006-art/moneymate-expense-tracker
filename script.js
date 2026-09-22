@@ -15,7 +15,8 @@ const CATEGORIES = [
     "🍛 Lunch",
     "☕ Snacks",
     "🚗 Auto — Evening",
-    "🍽️ Dinner",
+    "🍽️ Mess",
+   "🍽️ Dinner",
     "📚 Study",
     "🏠 Home",
     "📱 Phone Recharge",
@@ -36,6 +37,8 @@ const CATEGORIES = [
     "🐶 Pets",
     "💇 Personal Care",
     "🎵 Subscriptions",
+   "🛒 Grocery",
+   "💵 Cash",
 
     // Other
     "📦 Other"
