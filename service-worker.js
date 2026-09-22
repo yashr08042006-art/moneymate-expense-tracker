@@ -1,4 +1,4 @@
-const CACHE_NAME = "moneymate-v1";
+const CACHE_NAME = "moneymate-v2";
 
 const FILES_TO_CACHE = [
     "./",
